@@ -35,6 +35,8 @@ module mojo_top (
         alu8.alufn = test.alufn;
         alu8.a = test.alu8_in[1];
         alu8.b = test.alu8_in[0];
+
+        test.alu8_out = 0;
      
         reset_cond.in = ~rst_n;     // input raw inverted reset signal
         rst = reset_cond.out;       // conditioned reset
@@ -47,13 +49,16 @@ module mojo_top (
         io_led = 3x{{8h00}};        // turn LEDs off
         io_seg = 8hff;              // turn segments off
         io_sel = 4hf;               // select no digits
-            
-        test.alu8_out = alu8.alu;
-        led[2:0] = c{alu8.z, alu8.v, alu8.n};
-        io_led[2] = test.alu8_in[1];
-        io_led[1] = test.alu8_in[0];
-        io_led[0] = alu8.alu;
+        
+        // test ALU if io_dip and io_button are both active
+        if (io_dip[2][7] & io_button[0]) {
+            test.alu8_out = alu8.alu;
+            led[2:0] = c{alu8.z, alu8.v, alu8.n};
+            io_led[2] = test.alu8_in[1];
+            io_led[1] = test.alu8_in[0];
+            io_led[0] = alu8.alu;
 
-        led[7] = test.result;
+            led[7] = test.result;
+            } 
     }
 }
