@@ -25,6 +25,14 @@ module alu_bool8 (
             b1010:
                 // "A"
                 bool = a;
-             }
+
+            b0001:
+                // NOR
+                bool = !(a | b);
+
+            b0111:
+                // NAND
+                bool = !(a & b);
+            }
         }
     }

@@ -1,0 +1,31 @@
+Compare
+Eq: 
+1)  big ==big:  127 == 127
+2)  small == small: 2==2
+3)  –ve == -ve: -64 == -64
+4)  Error:      -100==10
+<:
+1)  Small < big:    2<100
+2)  Small< small:   1<2
+3)  Big<big:    100<127
+4)  Error:      64<20
+<=:
+1)  Small == small:  3==3
+2)  Small <= big:   2<=126
+3)  Big <= big:     111<= 120
+4)  Error:      2<=1
+ADD
+1)  Small + Small:  2+3 = 5
+2)  Big + Big:  60+62 = 122
+3)  Big + small:    120 + 7 = 127
+4)  (error, overflow) Big + Big:    120+120
+SUB
+1)  Small – small:  1-1 = 0
+2)  Small-big:  11-111= -100
+3)  (-big)-(small): (-120)-(-20) = -100
+4)  (error,overflow)(-big)-(big): -100-100=-200
+MUL
+1)  Small x small:  4x4=16
+2)  –small x big:   -3x40 = -120
+3)  –small x –small: -12 x -9 = 108
+4)  (error, overflow) big x small: 100x10 = 1000
