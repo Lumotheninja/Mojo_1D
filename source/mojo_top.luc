@@ -51,12 +51,12 @@ module mojo_top (
         io_sel = 4hf;               // select no digits
         
         // test ALU if io_dip and io_button are both active
-        if (io_dip[2][7] & io_button[0]) {
+        if (io_dip[2][7]) {
             test.alu8_out = alu8.alu;
             led[2:0] = c{alu8.z, alu8.v, alu8.n};
             io_led[2] = test.alu8_in[1];
             io_led[1] = test.alu8_in[0];
-            io_led[0] = alu8.alu;
+            io_led[0] = test.alufn;
 
             led[7] = test.result;
             } 
